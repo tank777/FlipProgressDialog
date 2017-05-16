@@ -19,7 +19,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.AccelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
@@ -67,6 +66,10 @@ public class FlipProgressDialog extends DialogFragment {
 	// Set cancelOnTouch
 	private boolean canceledOnTouchOutside = true;
 
+
+	public FlipProgressDialog() {
+
+	}
 
 	public void setImage(ImageView image) {
 		this.image = image;
@@ -136,11 +139,6 @@ public class FlipProgressDialog extends DialogFragment {
 		this.canceledOnTouchOutside = canceledOnTouchOutside;
 	}
 
-	public FlipProgressDialog() {
-
-	}
-
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -200,7 +198,7 @@ public class FlipProgressDialog extends DialogFragment {
 		// Set Background color and shape
 		BackgroundView backgroundView = new BackgroundView();
 		backgroundColorWIthAlpha = backgroundView.createTransparentColor(backgroundColor, backgroundAlpha);
-		Drawable backgroundDrawable = backgroundView.setBackground(view,backgroundColorWIthAlpha,borderColor,cornerRadius,borderStroke);
+		Drawable backgroundDrawable = BackgroundView.setBackground(view, backgroundColorWIthAlpha, borderColor, cornerRadius, borderStroke);
 		getDialog().getWindow().setBackgroundDrawable(backgroundDrawable);
 
 		// Let's create the missing ImageView
@@ -291,6 +289,7 @@ public class FlipProgressDialog extends DialogFragment {
 
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
+
 		Dialog dialog = super.onCreateDialog(savedInstanceState);
 		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		return dialog;
