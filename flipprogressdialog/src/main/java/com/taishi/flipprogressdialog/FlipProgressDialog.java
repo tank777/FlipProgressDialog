@@ -289,4 +289,10 @@ public class FlipProgressDialog extends DialogFragment {
 		this.endAngle = endAngle*2;
 	}
 
+	@Override
+	public Dialog onCreateDialog(Bundle savedInstanceState) {
+		Dialog dialog = super.onCreateDialog(savedInstanceState);
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		return dialog;
+	}
 }
